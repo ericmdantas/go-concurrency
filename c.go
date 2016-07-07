@@ -16,7 +16,7 @@ type todo struct {
 }
 
 func main() {
-	var info []*todo
+	var info []todo
 	var mutex sync.Mutex
 	var wg sync.WaitGroup
 
@@ -27,7 +27,7 @@ func main() {
 
 		go func(j int) {
 			mutex.Lock()
-			info = append(info, &todo{msg: "abc" + strconv.Itoa(j)})
+			info = append(info, todo{msg: "abc" + strconv.Itoa(j)})
 			mutex.Unlock()
 
 			wg.Done()
